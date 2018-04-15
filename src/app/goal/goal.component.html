@@ -1,0 +1,61 @@
+<section class="container">
+    <header class="jumbotron">
+
+        <h1>My Goals</h1>
+
+    </header>
+
+    <hr>
+
+    <div class="row">
+
+        <!-- Add output event addGoal that triggers function addNewGoal 
+
+             Pass values from output event to addNewGoal -->
+        <app-goal-form (addGoal)="addNewGoal($event)"></app-goal-form>
+
+    </div>
+
+    <hr>
+
+    <ul>
+        <!-- let i = index : registers the position index for each list item -->
+        <div  class="row" *ngFor='let goalFromParent of goals; let i = index'>
+
+            <div class="row">
+                
+                <li id="{{i}}" appStrikethrough>{{goalFromParent.name}} due on {{goalFromParent.completeDate|date|uppercase}}</li>
+                
+                <!-- Output property binding : button is clicked == toogleDetails function is triggered -->
+                <button class="btn btn-primary" (click)='toogleDetails(i)'>Toggle Details</button>
+
+            </div>
+
+            <div class="row">
+                <!-- Pass goalFromParent to child component
+
+                     Check the value of showDescription for the goalFromParent
+
+                     Capture event being transmitted / capture isComplete from child component
+
+                     Call completeGoal function and pass values being emitted / $event placeholder for values being emitted with the event
+
+                     Also, pass index of the goalFromParent
+
+                     Add output event that gets emitted == isComplete
+
+                     Call deleteGoal function and pass emitted value, $event, and index of the goal
+                 -->
+                <app-goal-details *ngIf="goalFromParent.showDescription" [goalToChild]='goalFromParent' (isComplete)='deleteGoal($event, i)'></app-goal-details>
+                
+            </div>
+
+        </div>
+
+    </ul>
+
+    <p *ngIf='goals.length > 5'>You have too many goals</p>
+
+    <p>You have {{goals.length}} goals</p>
+
+</section>

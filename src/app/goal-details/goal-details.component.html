@@ -1,0 +1,11 @@
+<p>
+  {{goalToChild.description}}
+</p>
+
+<p>This goal will be completed in {{goalToChild.completeDate|dateCount}} days</p>
+
+<!-- Pass a boolean to the goalComplete function -->
+<!-- <button (click)='goalComplete(true)'>Complete</button> -->
+
+<!-- Pass boolean to the goalDelete function -->
+<button class="btn btn-danger" (click)='goalDelete(true)'>Complete</button>
