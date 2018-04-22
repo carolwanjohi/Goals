@@ -13,10 +13,10 @@ export class DateCountPipe implements PipeTransform {
         let today = new Date();
 
         // Get today's date without Time
-        let todayWithNoTime = new Date( today.getFullYear(), today.getMonth(), today.getDate());
+        let todayWithNoTime:any = new Date( today.getFullYear(), today.getMonth(), today.getDate());
 
         // Get difference between date on template and today and return in miliseconds
-        var dateDifference:any = Math.abs(value-todayWithNoTime);
+        var dateDifference  = Math.abs(value-todayWithNoTime);
 
         // Convert miliseconds to seconds
         var dateDifferenceSeconds = dateDifference * 0.001;

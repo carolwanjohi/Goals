@@ -1,1 +1,47 @@
-<app-goal></app-goal>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+    <div class="container-fluid">
+        
+        <!-- Navbar brand and toggle button get grouped together for better mobile display -->
+
+        <div class="navbar-header">
+            
+            <!-- Toggle button -->
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapseNav" aria-expanded="false" type="button" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <!-- Navbar brand -->
+            <a href="#" class="navbar-brand">Goal App</a>
+
+        </div>
+
+        <!-- Collect links, formas and other content for toggling -->
+
+        <div class="collapse navbar-collapse" id="collapseNav">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <!-- Link to Goal Component -->
+                <li>
+                    <a class="nav-link" routerLink="/goals" routerLinkActive="active">Goals</a>
+                </li>
+
+                <!-- Link to About Component -->
+                <li>
+                    <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+<router-outlet></router-outlet>
+
+<!-- <app-goal></app-goal> -->
+

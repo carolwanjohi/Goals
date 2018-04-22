@@ -1,11 +1,21 @@
-<p>
-  {{goalToChild.description}}
-</p>
+<section class="container">
 
-<p>This goal will be completed in {{goalToChild.completeDate|dateCount}} days</p>
+    <header class="jumbotron">
+        <h2>Your Goal is:</h2>
+        <h2>{{goalToChild.name}}</h2>
+    </header>
+
+    <hr>
+
+    <p>{{goalToChild.description}}</p>
+
+    <p>This goal will be completed in {{goalToChild.completeDate|dateCount}} days</p> 
+
+</section>
+    
 
 <!-- Pass a boolean to the goalComplete function -->
 <!-- <button (click)='goalComplete(true)'>Complete</button> -->
 
 <!-- Pass boolean to the goalDelete function -->
-<button class="btn btn-danger" (click)='goalDelete(true)'>Complete</button>
+<!-- <button class="btn btn-danger" (click)='goalDelete(true)'>Complete</button> -->

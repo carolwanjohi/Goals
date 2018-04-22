@@ -1,4 +1,6 @@
+<ng-progress></ng-progress>
 <section class="container">
+
     <header class="jumbotron">
 
         <h1>My Goals</h1>
@@ -8,10 +10,35 @@
     <hr>
 
     <div class="row">
+        
+        <blockquote class="text-center text-lg">
 
-        <!-- Add output event addGoal that triggers function addNewGoal 
+            <!-- Display quote from Quote Api -->
+            <p>{{quote.quote}}</p>
 
-             Pass values from output event to addNewGoal -->
+            <!-- Display author of quote from Quote Api -->
+
+            <footer>
+
+                <cite>
+                    {{quote.author}}
+                </cite>
+
+            </footer>
+
+        </blockquote>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        <!-- 
+            Add output event addGoal that triggers function addNewGoal 
+
+            Pass values from output event to addNewGoal 
+        -->
         <app-goal-form (addGoal)="addNewGoal($event)"></app-goal-form>
 
     </div>
@@ -26,12 +53,42 @@
                 
                 <li id="{{i}}" appStrikethrough>{{goalFromParent.name}} due on {{goalFromParent.completeDate|date|uppercase}}</li>
                 
-                <!-- Output property binding : button is clicked == toogleDetails function is triggered -->
-                <button class="btn btn-primary" (click)='toogleDetails(i)'>Toggle Details</button>
+                <!-- 
+                    Button to navigate to Goal Details Component 
+
+                    Call go ToUrl function and pass in the id of the goal
+                -->
+                <button class="btn btn-primary" (click)=goToUrl(goalFromParent.id)>View Details</button>
+
+                <!-- 
+                    Button to delete a goal 
+
+                    Call deleteGoal function and pass in id of the goal
+                -->
+                <button class="bt btn-danger" (click)=deleteGoal(i)>Delete Goal</button>
+                
 
             </div>
 
-            <div class="row">
+        </div>
+
+    </ul>
+
+    <p *ngIf='goals.length > 5'>You have too many goals</p>
+
+    <p>You have {{goals.length}} goals</p>
+
+</section>
+
+                <!-- Output property binding : button is clicked == toogleDetails function is triggered -->
+
+
+            <!-- <div class="row button-right">
+                
+                <button class="btn btn-primary" (click)='toogleDetails(i)'>Toggle Details</button>
+            </div> -->
+
+            <!-- <div class="row"> -->
                 <!-- Pass goalFromParent to child component
 
                      Check the value of showDescription for the goalFromParent
@@ -46,16 +103,12 @@
 
                      Call deleteGoal function and pass emitted value, $event, and index of the goal
                  -->
-                <app-goal-details *ngIf="goalFromParent.showDescription" [goalToChild]='goalFromParent' (isComplete)='deleteGoal($event, i)'></app-goal-details>
+                <!-- <app-goal-details *ngIf="goalFromParent.showDescription" [goalToChild]='goalFromParent' (isComplete)='deleteGoal($event, i)'></app-goal-details> -->
                 
-            </div>
+            <!-- </div> -->
 
-        </div>
 
-    </ul>
 
-    <p *ngIf='goals.length > 5'>You have too many goals</p>
 
-    <p>You have {{goals.length}} goals</p>
 
-</section>
+
